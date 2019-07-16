@@ -1,5 +1,6 @@
 ## autostart {{{
 
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id compton -b
 #exec_always --no-startup-id dunst
 exec --no-startup-id xfsettingsd --chm-client-disable &
