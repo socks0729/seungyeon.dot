@@ -1,6 +1,5 @@
 ## autostart {{{
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id compton -b
 #exec_always --no-startup-id dunst
 exec --no-startup-id xfsettingsd --chm-client-disable &
@@ -70,37 +69,12 @@ exec_always --no-startup-id feh --bg-fill  ~/Pictures/icc.jpg
 
 ### Bar ###
 
-
-# Start i3bar to display a workspace bar (plus the system 
-# information i3status finds out, if available)
-bar { 
-#	tray_output none
-		status_command i3status -c ~/.config/i3status/config
-#		status_command i3blocks -c ~/.config/i3blocks/config
-#		status_command py3status
-		position top
-	colors {
-	background #000000
-	statusline #2f343f
-	separator #4b5262
-
-	# colour of border, background, and text
-	focused_workspace	#2f343f	#bf616a	#d8dee8
-	active_workspace	#2f343f	#2f343f	#d8dee8
-	inactive_workspace	#2f343f	#2f343f #d8dee8		
-	urgent_workspace	#2f343f #ebcb8b #2f343f
-	}
-#	mode hide
-#	hidden_state hide
-#	modifier Mod4
-}
-
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 ###Windows###
 
 for_window [instance="pavucontrol" class="Pavucontrol"] floating enable
-assign [class="Discord"] 10
+assign [class="discord"] 10
 assign [class="*^Firefox"] 3
 assign [class="Thunar"] 4
 #for_window [title="Thunar*"] move to $ws7
