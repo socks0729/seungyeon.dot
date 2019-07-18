@@ -2,7 +2,9 @@
 
 #exec --no-startup-id compton -b
 #exec_always --no-startup-id dunst
-exec --no-startup-id xfsettingsd --chm-client-disable &
+#exec --no-startup-id xfsettingsd --chm-client-disable &
+exec_always --no-startup-id xfwm4 --compositor=off
+exec_always --no-startup-id /usr/libexec/xfce-polkit
 
 #Swap win and alt
 exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
