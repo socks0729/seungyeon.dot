@@ -2,9 +2,11 @@
 
 #exec --no-startup-id compton -b
 #exec_always --no-startup-id dunst
-#exec --no-startup-id xfsettingsd --chm-client-disable &
+exec --no-startup-id xfsettingsd --chm-client-disable &
 exec_always --no-startup-id xfwm4 --compositor=off
-exec_always --no-startup-id /usr/libexec/xfce-polkit
+exec --no-startup-id /usr/libexec/xfce-polkit
+#exec --no-startup-id xfce4-power-manager-settings
+exec_always --no-startup-id xfce4-power-manager
 
 #Swap win and alt
 exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
@@ -67,7 +69,7 @@ bindsym $mod+Shift+g mode "$mode_gaps"
 
 ### Wallpaper ###
 
-exec_always --no-startup-id feh --bg-fill  ~/Pictures/icc.jpg
+exec_always --no-startup-id feh --bg-fill  ~/Pictures/Wallpapers/minplane.png
 
 ### Bar ###
 
@@ -79,8 +81,16 @@ for_window [instance="pavucontrol" class="Pavucontrol"] floating enable
 assign [class="discord"] 10
 assign [class="*^Firefox"] 3
 assign [class="Thunar"] 4
+assign [class="overwatch.exe"] 1
+assign [class="Wine"] 9
+assign [class="Overwatch"] 1
+
 #for_window [title="Thunar*"] move to $ws7
 for_window [class="Thunar"] move to $ws7
+for_window [class="overwatch.exe"] move to workspace 5
+for_window [class="overwatch"] move to workspace 6
+for_window [class="Overwatch"] move to workspace 4
+
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -113,7 +123,6 @@ font pango:monospace 11
 floating_modifier $mod
 
 
-
 # start dmenu (a program launcher)
 bindsym $mod+d exec rofi -show drun -lines 6
 bindsym $mod+shift d exec rofi -show run -lines 6
@@ -122,10 +131,6 @@ bindsym $mod+Tab   exec rofi -show window
 #bindsym $mod+d exec --no-startup-id rofi -show run -hide-scrollbar -fuzzy
 #bindsym $mod+d exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -column 3 -font 'Noto Sans 12'
 
-# There also is the (new) i3-dmenu-desktop which only 
-# displays applications shipping a .desktop file. It is a 
-# wrapper around dmenu, so you need that installed. 
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 
 ### Keybinds ###
@@ -261,3 +266,4 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
