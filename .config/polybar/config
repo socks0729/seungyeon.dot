@@ -54,7 +54,8 @@ module-margin-right = 0
 
 ; Font
 font-0 = Fira Code:style=Bold:size=10;3
-font-1 = FontAwesome5Free Solid:size=12;3
+font-1 = FontAwesome5Free Solid:size=15;3
+font-2 = FontAwesome5Brands Regular:size=15;3
 
 ; Modlues
 modules-left   = i3 
@@ -150,12 +151,18 @@ index-sort = true
 fuzzy-match = true
 
 ; Icons
-ws-icon-0       = 1;
+ws-icon-0       = 1;
 ws-icon-1       = 2;
-ws-icon-2       = 3;
-ws-icon-3       = 4;
-ws-icon-4       = 5;
-ws-icon-default = 
+ws-icon-2       = 3;
+ws-icon-3       = 4;
+ws-icon-4       = 5;
+ws-icon-5	= 6;
+ws-icon-6	= 7;
+ws-icon-7	= 8;
+ws-icon-8	= 9;
+ws-icon-9	= 10;
+
+ws-icon-default = 
 
 ; Focused label
 label-focused            = %icon%
@@ -428,4 +435,3 @@ screenchange-reload     = true
 [global/wm]
 margin-top    = 10
 margin-bottom = 10
-
