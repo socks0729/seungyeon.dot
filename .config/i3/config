@@ -78,19 +78,21 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ###Windows###
 
 for_window [instance="pavucontrol" class="Pavucontrol"] floating enable
-assign [class="discord"] 10
-assign [class="*^Firefox"] 3
+assign [class="discord"] 5
+assign [class="Brave-browser"] 3
 assign [class="Thunar"] 4
-assign [class="overwatch.exe"] 1
+assign [class="Lutris"] 7
 assign [class="Wine"] 9
 assign [class="Overwatch"] 1
+assign [class="Steam"] 8
 
 #for_window [title="Thunar*"] move to $ws7
 for_window [class="Thunar"] move to $ws7
 for_window [class="overwatch.exe"] move to workspace 5
 for_window [class="overwatch"] move to workspace 6
 for_window [class="Overwatch"] move to workspace 4
-
+for_window [instance="overwatch.exe" class="Wine"] move to workspace 1
+for_window [instance="wow.exe" class="Wine"] move to workspace 1
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -231,7 +233,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # i3 lock
-bindsym $mod+Shift+p exec --no-startup-id  i3lock -c 000000
+bindsym $mod+Shift+p exec --no-startup-id  i3lock -c 000000 & sleep 1 && xset dpms force off
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can 
@@ -266,4 +268,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
