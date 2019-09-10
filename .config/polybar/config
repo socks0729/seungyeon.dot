@@ -134,6 +134,7 @@ format = <label>
 format-foreground = ${colors.foreground}
 label = %title%
 label-empty =
+label-maxlen = 75
 
 [module/i3]
 type = internal/i3
