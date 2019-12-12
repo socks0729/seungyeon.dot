@@ -13,6 +13,14 @@ exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
 
 # }}}
 
+
+## Colors {{{
+
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #ee923a #285577 #ffffff #16a085   #ee923a
+
+
 ## Gaps {{{
 
 gaps inner 9
@@ -85,14 +93,13 @@ assign [class="Lutris"] 7
 assign [class="Wine"] 9
 assign [class="Overwatch"] 1
 assign [class="Steam"] 8
+assign [class="Minecraft 1.14.4"] 1
+assign [class="minecraft-launcher"] 1
 
 #for_window [title="Thunar*"] move to $ws7
-for_window [class="Thunar"] move to $ws7
-for_window [class="overwatch.exe"] move to workspace 5
-for_window [class="overwatch"] move to workspace 6
-for_window [class="Overwatch"] move to workspace 4
 for_window [instance="overwatch.exe" class="Wine"] move to workspace 1
 for_window [instance="wow.exe" class="Wine"] move to workspace 1
+for_window [instance="Minecraft Launcher" class= "minecraft-launcher"] move to workspace 1
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -140,7 +147,7 @@ bindsym $mod+Tab   exec rofi -show window
 set $mod Mod4
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -192,7 +199,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container bindsym $mod+d focus child
+# focus the child container 
+bindsym $mod+z focus child
 
 # Define names for default workspaces for which we 
 # configure key bindings later on. We use variables to 
@@ -264,7 +272,8 @@ mode "resize" {
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default" 
-        bindsym Escape mode "default" bindsym $mod+r mode "default"
+        bindsym Escape mode "default" 
+	bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
