@@ -23,57 +23,6 @@ client.focused          #ee923a #285577 #ffffff #16a085   #ee923a
 
 ## Gaps {{{
 
-gaps inner 9
-gaps outer 7
-new_window pixel 3
-for_window [class="^.*"] border pixel 5
-
-set $mode_gaps Gaps (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps (k/Up) grow locally, (K/Shift+Up) grow globally
-set $mode_gaps_inner Inner Gaps (k/Up) grow locally, (K/Shift+Up) grow globally
-
-mode "$mode_gaps" {
-        bindsym o           mode "$mode_gaps_outer"
-        bindsym i           mode "$mode_gaps_inner"
-        bindsym Return      mode "$mode_gaps"
-        bindsym Escape      mode "default"
-}
-
-mode "$mode_gaps_outer" {
-        bindsym k           gaps outer current plus 5
-        bindsym j           gaps outer current minus 5
-        # same bindings, but for the arrow keys
-        bindsym Up          gaps outer current plus 5
-        bindsym Down        gaps outer current minus 5
-
-        bindsym Shift+k     gaps outer all plus 5
-        bindsym Shift+j     gaps outer all minus 5
-        # same keybindings, but for the arrow keys
-        bindsym Shift+Up    gaps outer all plus 5
-        bindsym Shift+Down  gaps outer all minus 5
-
-        bindsym Return      mode "$mode_gaps"
-        bindsym Escape      mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym k          gaps inner current plus 5
-        bindsym j          gaps inner current minus 5
-        # same bindings, but for the arrow keys
-        bindsym Up         gaps inner current plus 5
-        bindsym Down       gaps inner current minus 5
-
-        bindsym Shift+k    gaps inner all plus 5
-        bindsym Shift+j    gaps inner all minus 5
-        # same keybindings, but for the arrow keys
-        bindsym Shift+Up   gaps inner all plus 5
-        bindsym Shift+Down gaps inner all minus 5
-
-        bindsym Return     mode "$mode_gaps"
-        bindsym Escape     mode "default"
-}
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-# }}
 
 ### Wallpaper ###
 
