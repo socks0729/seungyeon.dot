@@ -21,8 +21,6 @@ exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
 client.focused          #ee923a #285577 #ffffff #16a085   #ee923a
 
 
-## Gaps {{{
-
 
 ### Wallpaper ###
 
