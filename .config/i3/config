@@ -1,6 +1,7 @@
 ## autostart {{{
 
-#exec --no-startup-id compton -b
+exec_always --no-startup-id compton --backend glx --vsync opengl-swc
+#exec --no-startup-id compton -CG --unredir-if-possible --config /dev/null
 #exec_always --no-startup-id dunst
 exec --no-startup-id xfsettingsd --chm-client-disable &
 exec_always --no-startup-id xfwm4 --compositor=off
@@ -9,7 +10,7 @@ exec --no-startup-id /usr/libexec/xfce-polkit
 exec_always --no-startup-id xfce4-power-manager
 
 #Swap win and alt
-exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
+#exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
 
 # }}}
 
@@ -21,6 +22,59 @@ exec_always --no-startup-id setxkbmap -option altwin:swap_lalt_lwin
 client.focused          #ee923a #285577 #ffffff #16a085   #ee923a
 
 
+## Gaps {{{
+
+gaps inner 9
+gaps outer 7
+new_window pixel 3
+for_window [class="^.*"] border pixel 5
+
+set $mode_gaps Gaps (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps (k/Up) grow locally, (K/Shift+Up) grow globally
+set $mode_gaps_inner Inner Gaps (k/Up) grow locally, (K/Shift+Up) grow globally
+
+mode "$mode_gaps" {
+        bindsym o           mode "$mode_gaps_outer"
+        bindsym i           mode "$mode_gaps_inner"
+        bindsym Return      mode "$mode_gaps"
+        bindsym Escape      mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym k           gaps outer current plus 5
+        bindsym j           gaps outer current minus 5
+        # same bindings, but for the arrow keys
+        bindsym Up          gaps outer current plus 5
+        bindsym Down        gaps outer current minus 5
+
+        bindsym Shift+k     gaps outer all plus 5
+        bindsym Shift+j     gaps outer all minus 5
+        # same keybindings, but for the arrow keys
+        bindsym Shift+Up    gaps outer all plus 5
+        bindsym Shift+Down  gaps outer all minus 5
+
+        bindsym Return      mode "$mode_gaps"
+        bindsym Escape      mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym k          gaps inner current plus 5
+        bindsym j          gaps inner current minus 5
+        # same bindings, but for the arrow keys
+        bindsym Up         gaps inner current plus 5
+        bindsym Down       gaps inner current minus 5
+
+        bindsym Shift+k    gaps inner all plus 5
+        bindsym Shift+j    gaps inner all minus 5
+        # same keybindings, but for the arrow keys
+        bindsym Shift+Up   gaps inner all plus 5
+        bindsym Shift+Down gaps inner all minus 5
+
+        bindsym Return     mode "$mode_gaps"
+        bindsym Escape     mode "default"
+}
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+# }}
 
 ### Wallpaper ###
 
@@ -40,18 +94,21 @@ assign [class="Lutris"] 7
 assign [class="Wine"] 9
 assign [class="Overwatch"] 1
 assign [class="Steam"] 8
-assign [class="Minecraft 1.14.4"] 1
 assign [class="minecraft-launcher"] 1
+assign [class="battle.net.exe"] 9
 
 #for_window [title="Thunar*"] move to $ws7
-for_window [instance="overwatch.exe" class="Wine"] move to workspace 1
-for_window [instance="wow.exe" class="Wine"] move to workspace 1
-for_window [instance="Minecraft Launcher" class= "minecraft-launcher"] move to workspace 1
+for_window [instance="overwatch.exe" class="overwatch.exe"] move to workspace 1
+for_window [instance="wow.exe" class="wow.exe"] move to workspace 1
+for_window [instance="Minecraft Launcher" class="minecraft-launcher"] move to workspace 1
+for_window [instance="crx_cinhimbnkkaeohfgghhklpknlkffjgod" class="Brave-browser"] move to workpspace 6
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+#bindsym XF86AudioNext exec playerctl next
 
 
 # Font for window titles. Will also be used by the bar 
@@ -80,7 +137,7 @@ floating_modifier $mod
 
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show drun -lines 6
+bindsym $mod+d exec rofi -show drun -lines 8
 bindsym $mod+shift d exec rofi -show run -lines 6
 bindsym $mod+Tab   exec rofi -show window
 #bindsym $mod+d exec --no-startup-id dmenu_run
@@ -94,7 +151,7 @@ bindsym $mod+Tab   exec rofi -show window
 set $mod Mod4
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id compton urxvt
+bindsym $mod+Return exec --no-startup-id xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -187,6 +244,14 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9 
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# multimonitor
+
+bindsym $mod+Control+Shift+h move workspace to output left
+bindsym $mod+Control+l move workspace to output right
+bindsym $mod+Control+h move container to output left
+
+bindsym $mod+Control+3 move container to output DP-0
+
 # i3 lock
 bindsym $mod+Shift+p exec --no-startup-id  i3lock -c 000000 & sleep 1 && xset dpms force off
 # reload the configuration file
@@ -224,3 +289,4 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
