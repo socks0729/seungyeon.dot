@@ -14,7 +14,27 @@ white      = #e4e4e4
 yellow     = #e2b322
 brown      = #ae8e6c
 
+nord0 = #2E3440
+nord1 = #3B4252
+nord2 = #434C5E
+nord3 = #4C566A
+nord4 = #D8DEE9
+nord5 = #E5E9F0
+nord6 = #ECEFF4
+nord7 = #8FBCBB
+nord8 = #88C0D0
+nord9 = #81A1C1
+nord10 = #5E81AC
+nord11 = #BF616A
+nord12 = #D08770
+nord13 = #EBCB8B
+nord14 = #A3BE8C
+nord15 = #B48EAD
+
 [bar/top]
+
+monitor = ${env:MONITOR:}
+
 ; Size
 width  = 100%
 height = 30
@@ -33,8 +53,11 @@ radius = 0
 fixed-center = true
 
 ; Colors
-background = ${colors.background}
-foreground = ${colors.foreground}
+#background = ${colors.background}
+#foreground = ${colors.foreground}
+background = ${colors.nord3}
+foreground = ${colors.nord5}
+
 
 ; Underline
 line-size  = 2
@@ -70,7 +93,7 @@ cursor-scroll = ns-resize
 
 tray-position = right
 tray-padding = 5
-tray-background = ${colors.violet}
+tray-background = ${colors.blue}
 tray-offset-x = 
 
 
@@ -167,8 +190,10 @@ ws-icon-default = 
 
 ; Focused label
 label-focused            = %icon%
-label-focused-background = ${colors.orange}
-label-focused-foreground = ${colors.foreground}
+#label-focused-background = ${colors.orange}
+#label-focused-foreground = ${colors.foreground}
+label-focused-foreground = ${colors.nord6}
+label-focused-background = ${colors.nord8}
 label-focused-padding    = 2
 
 ; Unfocused labels
@@ -210,7 +235,7 @@ type = internal/pulseaudio
 
 ; Volume label
 label-volume            =  %percentage%%
-label-volume-background = ${colors.blue}
+label-volume-background = ${colors.violet}
 label-volume-foreground = ${colors.foreground}
 label-volume-padding    = 2
 
@@ -237,8 +262,11 @@ date-alt  = %x
 
 ; Label
 label            =  %time%  |  %date%
-label-background = ${colors.indigo}
-label-foreground = ${colors.foreground}
+#label-background = ${colors.indigo}
+#label-foreground = ${colors.foreground}
+
+format-foreground = ${colors.nord5}
+format-background = ${colors.nord10}
 label-padding    = 1
 
 
